@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics.Arm;
 using static System.Console; // fixa a classe console 
 int opc;
@@ -12,8 +13,8 @@ do
     Console.WriteLine("==================================");
     Console.WriteLine("[1] Calculos");
     Console.WriteLine("[2] Entrevista");
-    Console.WriteLine("[3] tabuada");
-    Console.WriteLine("[4] fim");
+    Console.WriteLine("[3] Par ou Impar");
+    Console.WriteLine("[4] Qual numero maior?");
 
     Console.WriteLine("digite uma opção");
     opc = int.Parse(ReadLine()!);
@@ -24,6 +25,12 @@ do
             break;
         case 2:
             Entrevista();
+            break;
+        case 3:
+            Par_Impar();
+            break;
+        case 4:
+            Comparar_Numeros();
             break;
     }
 } while (opc != 0);
@@ -74,8 +81,6 @@ static void Entrevista()
     //Declaração de variaveis
     string Nome, Endereco, Escola, Filhos, Resposta;
     int idade, Mes_Nascimento, Ano_Nascimento, Ano_Atual, Mes_Atual, Quantidades_filhos = 0;
-
-
     do
     {
         //Entradas
@@ -128,4 +133,55 @@ static void Entrevista()
         Console.WriteLine("deseja continuar(s/n)");
         Resposta = Console.ReadLine();
     } while (Resposta == "Sim" && Resposta == "sim ");  
+}
+static void Par_Impar()
+{  
+    // Variaveis 
+    int R = 0, Numero;
+    string Resposta;
+    do
+    {
+        Clear();
+        Console.WriteLine("Digite um numero para saber se é impar ou par? ");
+        Numero = int.Parse(Console.ReadLine());
+        //Processamento
+        R = Numero % 2;
+
+        if (R == 0)
+        {
+           Console.WriteLine("o numero" + Numero + " é par ");
+        }
+        else
+        {
+           Console.WriteLine("o numero" + Numero + "é impar");
+        }
+        Console.WriteLine("Deseja continuar?");
+        Resposta = Console.ReadLine();
+    } while (Resposta == "s" && Resposta == "sim");
+}
+static void Comparar_Numeros()
+{
+    int Numero1, Numero2;
+    string Resposta;
+    do
+    {
+
+        Clear();
+        Console.WriteLine("digite um numero para saber o maior");
+        Numero1 = int.Parse(Console.ReadLine());
+        Console.WriteLine("digite outro numero");
+        Numero2 = int.Parse(Console.ReadLine());
+
+        if (Numero1 > Numero2)
+        {
+            Console.WriteLine("o numero" + Numero1 + "é maior");
+        }
+        else
+        {
+            Console.WriteLine("o numero " + Numero1 + "é menor ");
+        }
+        Console.WriteLine("deseja continuar?");
+        Resposta = Console.ReadLine();
+    } while (Resposta == "s" && Resposta == "sim");
+
 }
