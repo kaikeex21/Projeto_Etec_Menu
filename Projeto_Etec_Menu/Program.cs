@@ -4,7 +4,7 @@ using System.Runtime.Intrinsics.Arm;
 using static System.Console; // fixa a classe console 
 int opc;
 
-BackgroundColor = ConsoleColor.DarkRed;
+BackgroundColor = ConsoleColor.Black;
 do
 {
     Clear();
@@ -17,6 +17,8 @@ do
     Console.WriteLine("[4] Qual numero maior?");
     Console.WriteLine("[5] Qual numero sucessor e antecessor?");
     Console.WriteLine("[6] Qual Periodo do dia");
+    Console.WriteLine("[7] Tabuada");
+    Console.WriteLine("[8] Contador");
 
     Console.WriteLine("digite uma opção");
     opc = int.Parse(ReadLine()!);
@@ -37,6 +39,16 @@ do
         case 5:
             Numero_Sucessor_Antecessor();
             break;
+        case 6:
+            horas();
+            break;
+        case 7:
+            Mult_auto();
+            break;
+        case 8:
+            Contador();
+            break;
+
     }
 } while (opc != 0);
 
@@ -210,4 +222,89 @@ static void Numero_Sucessor_Antecessor()
         Console.WriteLine("Deseja continuar?");
         Resposta = Console.ReadLine();
     } while (Resposta == "s" && Resposta == "sim");
+}
+static void horas()
+{
+    int Hora;
+    string Resposta;
+    do
+    {
+        Clear();
+        Console.WriteLine("digite a hora (0-24):");
+        Hora = int.Parse(Console.ReadLine());
+        if (Hora >= 6 && Hora <= 12)
+        {
+            Console.WriteLine("é dia");
+        }
+        else if (Hora > 12 && Hora < 18)
+        {
+            Console.WriteLine("é tarde");
+        }
+        else if (Hora >= 18 && Hora <= 24)
+        {
+            Console.WriteLine("é noite");
+        }
+        else if (Hora > 0 && Hora < 6)
+        {
+            Console.WriteLine("é madrugada");
+        }
+        else
+        {
+            Console.WriteLine("coloque um horario existente");
+        }
+        Console.WriteLine("deseja continuar?");
+        Resposta = (Console.ReadLine());
+    } while (Resposta == "s" && Resposta == "sim");
+
+}
+static void Mult_auto()
+{
+    int n;
+    string resposta;
+
+    do
+    {
+        Console.Clear(); // limpa a tela
+        Console.Write("Informe um número: ");
+        n = int.Parse(Console.ReadLine());
+
+        for (int i = 1; i <= 10; i++)
+        {
+            Console.WriteLine($"{n} x {i} = {n * i}");
+            System.Threading.Thread.Sleep(10); // pausa de 10ms
+        }
+
+        Console.Write("\n\nDeseja continuar (s/n)? ");
+        resposta = Console.ReadLine().ToLower();
+
+    } while (resposta == "s" || resposta == "sim");
+}
+static void Contador()
+{
+    int inicio, limite, fator;
+    string resposta;
+
+    do
+    {
+        Console.Clear();
+        Console.Write("Informe o valor inicial: ");
+        inicio = int.Parse(Console.ReadLine());
+        Console.Write("Informe o valor final: ");
+        limite = int.Parse(Console.ReadLine());
+        Console.Write("Informe o fator de incremento: ");
+        fator = int.Parse(Console.ReadLine());
+        for (int i = inicio; i <= limite; i += fator)
+        {
+            Console.Write(i);
+            Thread.Sleep(1000); // pausa de 1 segundo (1000 ms)
+
+            if (i < limite)
+            {
+                Console.Write(", ");
+            }
+        }
+        Console.WriteLine(".\n\nDeseja continuar (s/n)? ");
+        resposta = Console.ReadLine().ToLower();
+
+    } while (resposta == "s" && resposta == "sim");
 }
