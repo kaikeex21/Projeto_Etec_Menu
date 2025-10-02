@@ -15,6 +15,8 @@ do
     Console.WriteLine("[2] Entrevista");
     Console.WriteLine("[3] Par ou Impar");
     Console.WriteLine("[4] Qual numero maior?");
+    Console.WriteLine("[5] Qual numero sucessor e antecessor?");
+    Console.WriteLine("[6] Qual Periodo do dia");
 
     Console.WriteLine("digite uma opção");
     opc = int.Parse(ReadLine()!);
@@ -31,6 +33,9 @@ do
             break;
         case 4:
             Comparar_Numeros();
+            break;
+        case 5:
+            Numero_Sucessor_Antecessor();
             break;
     }
 } while (opc != 0);
@@ -184,4 +189,25 @@ static void Comparar_Numeros()
         Resposta = Console.ReadLine();
     } while (Resposta == "s" && Resposta == "sim");
 
+}
+static void Numero_Sucessor_Antecessor()
+{
+    int Numero, Sucessor, Antecessor;
+    string Resposta;
+    do
+    {
+        Clear();
+        Console.WriteLine("digite um numero para saber qual o sucessor e o antecessor dele");
+        Numero = int.Parse(Console.ReadLine());
+
+        Sucessor = Numero + 1;
+        Antecessor = Numero - 1;
+
+        Console.WriteLine("o sucessor é " + Sucessor);
+        Console.WriteLine("o antecessor é " + Antecessor);
+        Console.WriteLine("o numero é " + Numero);
+
+        Console.WriteLine("Deseja continuar?");
+        Resposta = Console.ReadLine();
+    } while (Resposta == "s" && Resposta == "sim");
 }
