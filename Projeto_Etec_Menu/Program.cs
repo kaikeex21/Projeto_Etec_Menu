@@ -8,20 +8,22 @@ BackgroundColor = ConsoleColor.Black;
 do
 {
     Clear();
-    Console.WriteLine("==================================");
-    Console.WriteLine("      *** Menu Principal ***");
-    Console.WriteLine("==================================");
-    Console.WriteLine("[1] Calculos");
-    Console.WriteLine("[2] Entrevista");
-    Console.WriteLine("[3] Par ou Impar");
-    Console.WriteLine("[4] Qual numero maior?");
-    Console.WriteLine("[5] Qual numero sucessor e antecessor?");
-    Console.WriteLine("[6] Qual Periodo do dia");
-    Console.WriteLine("[7] Tabuada");
-    Console.WriteLine("[8] Contador");
+    janela(0, 0, 79, 2, ConsoleColor.DarkGreen);
+    janela(24, 5, 63, 18, ConsoleColor.DarkGreen);
+    SetCursorPosition(25, 5);WriteLine("══════════════════════════════════");
+    SetCursorPosition(25, 6);WriteLine("      *** Menu Principal ***");
+    SetCursorPosition(25, 7);WriteLine("══════════════════════════════════");
+    SetCursorPosition(25, 8);WriteLine("[1] Calculos");
+    SetCursorPosition(25, 9);WriteLine("[2] Entrevista");
+    SetCursorPosition(25, 10);WriteLine("[3] Par ou Impar");
+    SetCursorPosition(25, 11);WriteLine("[4] Qual numero maior?");
+    SetCursorPosition(25, 12);WriteLine("[5] Qual numero sucessor e antecessor?");
+    SetCursorPosition(25, 13);WriteLine("[6] Qual Periodo do dia");
+    SetCursorPosition(25, 14);WriteLine("[7] Tabuada");
+    SetCursorPosition(25, 15);WriteLine("[8] Contador");
 
-    Console.WriteLine("digite uma opção");
-    opc = int.Parse(ReadLine()!);
+    SetCursorPosition(25, 16);WriteLine("digite uma opção");
+    SetCursorPosition(25, 17); opc = int.Parse(ReadLine()!);
     switch (opc)
     {
         case 1:
@@ -50,7 +52,7 @@ do
             break;
 
     }
-} while (opc != 0);
+} while (opc != 8);
 
 
 static void Todos_Calculos()
@@ -62,41 +64,41 @@ static void Todos_Calculos()
     decimal valor;//real
     float juros;//real
     bool achou = true;//logico
+    do
+    {
+        Console.BackgroundColor = ConsoleColor.DarkRed;
+        Console.Clear();//limpa
+        Console.WriteLine("Boa noite!!!!");//escreva com \n no final 
+                                           //Entradas
+        Console.SetCursorPosition(25, 5);
+        Console.WriteLine("Informe o 1º numero");//escreva
+        a = double.Parse(Console.ReadLine()!);
+        Console.SetCursorPosition(25, 7);
+        Console.WriteLine("Informe o 2º numero");//escreva
+        b = double.Parse(Console.ReadLine()!);
+        //processamento
+        r = a + b;
+        x = a - b;
+        y = a * b;
+        z = a / b;
 
-    
-    Console.BackgroundColor = ConsoleColor.DarkRed;
-    Console.Clear();//limpa
-    Console.WriteLine("Boa noite!!!!");//escreva com \n no final 
-                                       //Entradas
-    Console.SetCursorPosition(25, 5);
-    Console.WriteLine("Informe o 1º numero");//escreva
-    a = double.Parse(Console.ReadLine()!);
-    Console.SetCursorPosition(25, 7);
-    Console.WriteLine("Informe o 2º numero");//escreva
-    b = double.Parse(Console.ReadLine()!);
-    //processamento
-    r = a + b;
-    x = a - b;
-    y = a * b;
-    z = a / b;
-
-    //saidas
-    Console.SetCursorPosition(25, 15);
-    Console.WriteLine($"{a} + {b} = {r}");
-    Console.SetCursorPosition(25, 16);
-    Console.WriteLine($"{a} - {b} = {x}");
-    Console.SetCursorPosition(25, 17);
-    Console.WriteLine($"{a} x {b} = {y}");
-    Console.SetCursorPosition(25, 18);
-    Console.WriteLine($"{a} / {b} = {z}");
-    Console.ReadKey();
-    Console.Clear();
-
+        //saidas
+        Console.SetCursorPosition(25, 15);
+        Console.WriteLine($"{a} + {b} = {r}");
+        Console.SetCursorPosition(25, 16);
+        Console.WriteLine($"{a} - {b} = {x}");
+        Console.SetCursorPosition(25, 17);
+        Console.WriteLine($"{a} x {b} = {y}");
+        Console.SetCursorPosition(25, 18);
+        Console.WriteLine($"{a} / {b} = {z}");
+        Console.ReadKey();
+        Console.Clear();
+    } while (continuar());
 }
 static void Entrevista()
 {
     //Declaração de variaveis
-    string Nome, Endereco, Escola, Filhos, Resposta;
+    string Nome, Endereco, Escola, Filhos;
     int idade, Mes_Nascimento, Ano_Nascimento, Ano_Atual, Mes_Atual, Quantidades_filhos = 0;
     do
     {
@@ -147,15 +149,12 @@ static void Entrevista()
             Console.WriteLine("que tem 1 filho");
         }
         Console.WriteLine("e que tem " + idade + "anos completos");
-        Console.WriteLine("deseja continuar(s/n)");
-        Resposta = Console.ReadLine();
-    } while (Resposta == "Sim" && Resposta == "sim ");  
+    } while (continuar());  
 }
 static void Par_Impar()
 {  
     // Variaveis 
     int R = 0, Numero;
-    string Resposta;
     do
     {
         Clear();
@@ -166,20 +165,18 @@ static void Par_Impar()
 
         if (R == 0)
         {
-           Console.WriteLine("o numero" + Numero + " é par ");
+            Console.WriteLine("o numero" + Numero + " é par ");
         }
         else
         {
-           Console.WriteLine("o numero" + Numero + "é impar");
+            Console.WriteLine("o numero" + Numero + "é impar");
         }
-        Console.WriteLine("Deseja continuar?");
-        Resposta = Console.ReadLine();
-    } while (Resposta == "s" && Resposta == "sim");
+
+    } while (continuar());
 }
 static void Comparar_Numeros()
 {
     int Numero1, Numero2;
-    string Resposta;
     do
     {
 
@@ -197,15 +194,12 @@ static void Comparar_Numeros()
         {
             Console.WriteLine("o numero " + Numero1 + "é menor ");
         }
-        Console.WriteLine("deseja continuar?");
-        Resposta = Console.ReadLine();
-    } while (Resposta == "s" && Resposta == "sim");
 
+    } while (continuar());
 }
 static void Numero_Sucessor_Antecessor()
 {
     int Numero, Sucessor, Antecessor;
-    string Resposta;
     do
     {
         Clear();
@@ -220,13 +214,12 @@ static void Numero_Sucessor_Antecessor()
         Console.WriteLine("o numero é " + Numero);
 
         Console.WriteLine("Deseja continuar?");
-        Resposta = Console.ReadLine();
-    } while (Resposta == "s" && Resposta == "sim");
+
+    } while (continuar());
 }
 static void horas()
 {
     int Hora;
-    string Resposta;
     do
     {
         Clear();
@@ -252,16 +245,13 @@ static void horas()
         {
             Console.WriteLine("coloque um horario existente");
         }
-        Console.WriteLine("deseja continuar?");
-        Resposta = (Console.ReadLine());
-    } while (Resposta == "s" && Resposta == "sim");
+
+    } while (continuar());
 
 }
 static void Mult_auto()
 {
     int n;
-    string resposta;
-
     do
     {
         Console.Clear(); // limpa a tela
@@ -274,16 +264,13 @@ static void Mult_auto()
             System.Threading.Thread.Sleep(10); // pausa de 10ms
         }
 
-        Console.Write("\n\nDeseja continuar (s/n)? ");
-        resposta = Console.ReadLine().ToLower();
+        Console.Write("\n\nDeseja continuar (s/n)? "); 
 
-    } while (resposta == "s" || resposta == "sim");
+    } while (continuar());
 }
 static void Contador()
 {
     int inicio, limite, fator;
-    string resposta;
-
     do
     {
         Console.Clear();
@@ -303,8 +290,44 @@ static void Contador()
                 Console.Write(", ");
             }
         }
-        Console.WriteLine(".\n\nDeseja continuar (s/n)? ");
-        resposta = Console.ReadLine().ToLower();
 
-    } while (resposta == "s" && resposta == "sim");
+    } while (continuar());
+}
+static void janela(int C1, int L1, int C2, int L2, ConsoleColor corFundo)
+{
+    BackgroundColor = corFundo;
+    for (int i = L1; i <= L2; i++)
+    {
+        SetCursorPosition(C1, i); Write(new string(' ', C2 - C1));
+
+    }
+    // horizontais
+    for (int i = C1; i <= C2; i++)
+    {
+        SetCursorPosition(i, L1); Write("═");//ALT 205
+        SetCursorPosition(i, L2); Write("═");
+    }
+    // laterais
+    for (int i = L1; i <= L2; i++)
+    {
+        SetCursorPosition(C1, i); Write("║");//ALT 186
+        SetCursorPosition(C2, i); Write("║");
+    }
+    // canto
+    SetCursorPosition(C1, L1); Write("╔");//ALT 201
+    SetCursorPosition(C2, L1); Write("╗");//ALT 187
+    SetCursorPosition(C1, L2); Write("╚");//ALT 200
+    SetCursorPosition(C2, L2); Write("╝");//ALT 188
+}
+static bool continuar()
+{
+    string Resposta;
+    bool resultado;
+
+    janela(25, 20, 40, 29, ConsoleColor.Red);
+    SetCursorPosition(26, 21);
+    Write("Deseja continuar? S/N ");
+    Resposta = ReadLine()!.ToUpper();
+    resultado = (Resposta == "S" || Resposta == "sim");
+    return resultado;
 }
